@@ -4,12 +4,14 @@
 #>GKF1FGD02EGOM3 0 0 0 1 79
 #gactacacgtagtatCTCAATGATTCATACAGCTTCACATCGAGAGCAT
 
-inf = open("lucy.fasta", mode='r')
+import sys
 
-lclips =  open("lucy_clips.csv", mode='w')
+inf = open(sys.argv[-2], mode='r')
+
+lclips =  open(sys.argv[-1] + "_lucy_clips.csv", mode='w')
 lclips.write("ID,lclip,rclip\n")
 
-lclipped =  open("lucy_clipped.fasta", mode='w')
+lclipped =  open(sys.argv[-1] + "_lucy_clipped.fasta", mode='w')
 
 id = "" #read ID
 seq = "" #sequence
@@ -27,7 +29,7 @@ for line in inf:
       pieces = line.strip().split(" ")
       id = pieces[0]
       lclip = int(pieces[4])
-      if(lclip < min_lclip): lclip = 16 #first 16 are tag and 454 bases
+      #if(lclip < min_lclip): lclip = 16 #first 16 are tag and 454 bases
       rclip = int(pieces[5])
       if(id == ''):
         errors += 1
@@ -41,20 +43,20 @@ for line in inf:
       pieces = line.strip().split(" ")
       id = pieces[0]
       lclip = int(pieces[4])
-      if(lclip < 16): lclip = 16
+      #if(lclip < 16): lclip = 16
       rclip = int(pieces[5])
       if(id == ''):
         errors += 1  
   else:
-    seq = line.strip("\n")  
+    seq += line.strip()  
 
 
 #take care of last line:
-seq = line.strip("\n")
-
+seq += line.strip("\n")
 #write last record
 lclips.write("%s,%s,%s\n" % (id[1:],lclip,rclip))
 lclipped.write("%s\n%s\n" %(id,seq[lclip-1:rclip-1]))
+counter += 1
 
 
 lclips.close()   
