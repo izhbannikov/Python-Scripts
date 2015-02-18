@@ -6,7 +6,7 @@ from Bio import SeqIO
 
 if sys.argv[-1] == None :
 	out_prefix = "reads"
-else 
+else :
 	out_prefix = sys.argv[-1]
 
 SeqIO.convert(sys.argv[-2],'fastq',out_prefix,'fasta')
