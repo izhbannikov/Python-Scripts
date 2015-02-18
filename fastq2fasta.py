@@ -9,5 +9,5 @@ if sys.argv[-1] == None :
 else :
 	out_prefix = sys.argv[-1]
 
-SeqIO.convert(sys.argv[-2],'fastq',out_prefix,'fasta')
-SeqIO.convert(sys.argv[-2],'fastq',out_prefix,'qual')
+SeqIO.convert(sys.argv[-2],"fastq",out_prefix+".fasta","fasta")
+SeqIO.convert(sys.argv[-2],"fastq",out_prefix+".qual","qual")
