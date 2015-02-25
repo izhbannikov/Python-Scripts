@@ -20,6 +20,8 @@ rclip = 0
 errors = 0
 counter = 0
 min_lclip=0
+avg_left_trim = []
+avg_right_trim = []
 
 #The outer for loop iterates through all lines in the input file
 for line in inf:
@@ -34,6 +36,8 @@ for line in inf:
       if(id == ''):
         errors += 1
     else:
+      avg_left_trim.append(lclip)
+      avg_right_trim.append(len(seq)-rclip)
       lclips.write("%s,%s,%s\n" % (id[1:],lclip,rclip))
       lclipped.write("%s\n%s\n" %(id,seq[lclip-1:rclip-1]))
       counter += 1
@@ -63,3 +67,4 @@ lclips.close()
 lclipped.close()
 
 print("Total records %s.  Total errors %s" %(counter, errors))
+print("Average left trim: %s, right trim: %s", %(sum(avg_left_trim)/len(avg_left_trim), sum(avg_right_trim)/len(avg_right_trim)))
