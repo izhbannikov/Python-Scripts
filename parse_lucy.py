@@ -5,6 +5,9 @@
 #gactacacgtagtatCTCAATGATTCATACAGCTTCACATCGAGAGCAT
 
 import sys
+import numpy
+def median(lst):
+	return numpy.median(numpy.array(lst))
 
 inf = open(sys.argv[-2], mode='r')
 
@@ -68,3 +71,4 @@ lclipped.close()
 
 print("Total records %s.  Total errors %s" %(counter, errors))
 print("Average left trim: %s, right trim: %s" %(sum(avg_left_trim)/len(avg_left_trim), sum(avg_right_trim)/len(avg_right_trim)))
+print("Median left trim: %s, right trim: %s" %(median(avg_left_trim), median(avg_right_trim)))
