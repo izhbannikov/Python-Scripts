@@ -67,4 +67,4 @@ lclips.close()
 lclipped.close()
 
 print("Total records %s.  Total errors %s" %(counter, errors))
-print("Average left trim: %s, right trim: %s", %(sum(avg_left_trim)/len(avg_left_trim), sum(avg_right_trim)/len(avg_right_trim)))
+print("Average left trim: %s, right trim: %s" %(sum(avg_left_trim)/len(avg_left_trim), sum(avg_right_trim)/len(avg_right_trim)))
