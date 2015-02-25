@@ -6,8 +6,16 @@
 
 import sys
 import numpy
+from collections import Counter
+
 def median(lst):
 	return numpy.median(numpy.array(lst))
+
+def mode(lst):
+	data = Counter(lst)
+  	# Returns the highest occurring item
+	return data.most_common(1)
+
 
 inf = open(sys.argv[-2], mode='r')
 
