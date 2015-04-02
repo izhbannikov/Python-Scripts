@@ -18,11 +18,13 @@ def mode(lst):
 
 
 inf = open(sys.argv[-2], mode='r')
+#inf_qual = open(sys.argv[-2], mode='r')
 
 lclips =  open(sys.argv[-1] + "_lucy_clips.csv", mode='w')
 lclips.write("ID,lclip,rclip\n")
 
 lclipped =  open(sys.argv[-1] + "_lucy_clipped.fasta", mode='w')
+#lclipped_qual =  open(sys.argv[-1] + "_lucy_clipped.qual", mode='w')
 
 id = "" #read ID
 seq = "" #sequence
@@ -81,3 +83,4 @@ print("Total records %s.  Total errors %s" %(counter, errors))
 print("Average left trim: %s, right trim: %s" %(sum(avg_left_trim)/len(avg_left_trim), sum(avg_right_trim)/len(avg_right_trim)))
 print("Median left trim: %s, right trim: %s" %(median(avg_left_trim), median(avg_right_trim)))
 print("Mode left trim: %s, right trim: %s" %(mode(avg_left_trim), mode(avg_right_trim)))
+

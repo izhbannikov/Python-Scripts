@@ -3,11 +3,12 @@
 
 import sys
 from Bio import SeqIO
+from Bio.Alphabet import generic_dna
 
 if sys.argv[-1] == None :
 	out_prefix = "reads"
 else :
 	out_prefix = sys.argv[-1]
 
-SeqIO.convert(sys.argv[-2],"fastq",out_prefix+".fasta","fasta")
-SeqIO.convert(sys.argv[-2],"fastq",out_prefix+".qual","qual")
+SeqIO.convert(sys.argv[-2],"fastq",out_prefix+".fasta","fasta", alphabet=generic_dna)
+SeqIO.convert(sys.argv[-2],"fastq",out_prefix+".qual","qual", alphabet=generic_dna)
